@@ -16,7 +16,7 @@
 * **Functionality:** JavaScript-driven search and filtering systems.
 
 ## 👥 Meet the Developers (Team Swad Bharat)
-* **Mahek Gohel** - UI/UX Design, Frontend Development & Backend Development 
+* **Mahek Gohel** - UI/UX Design, Frontend Development & Backend Development, problem solving. 
 * **Dipti Makwana** - Project Architecture, Media Optimization, Frontend Development
 * **Sahista Pathan** - Content & Research
 * **Gayatri Patel** - Frontend Development
