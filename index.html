@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Swad Bharat - Authentic Indian Recipes</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+ <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="#"><i class="fas fa-utensils me-2"></i>Swad Bharat</a>
+    
+    
+    <!-- Search Bar-->
+    <div class="search-container me-3">
+      <input type="text" class="search-input" placeholder="Search recipes..." id="searchInput">
+      <button class="search-btn" onclick="performSearch()">
+        <i class="fas fa-search"></i>
+      </button>
+      <div class="search-results" id="searchResults">
+        <!-- Search results will be populated here -->
+      </div>
+    </div>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link active" href="#" onclick="showPage('home-page')">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" onclick="showPage('about-page')">About</a></li>
+        <li class="nav-item">
+          <div class="user-actions" id="guest-actions">
+            <button class="btn btn-outline-light btn-sm" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
+            <button class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#registerModal">Register</button>
+          </div>
+          <div class="user-menu" id="user-menu" style="display: none;">
+            <a href="#" class="nav-link" id="user-toggle">
+              <img src="Dipti2.jpg" class="user-avatar" alt="User">
+              <span id="username">User</span>
+            </a>
+            <div class="user-dropdown" id="user-dropdown">
+              <a href="#" onclick="showPage('user-dashboard')"><i class="fas fa-tachometer-alt me-2"></i>Dashboard</a>
+              <a href="#" onclick="showPage('user-dashboard'); showDashboardTab('wishlist')"><i class="fas fa-heart me-2"></i>My Wishlist</a>
+              <a href="#" onclick="showPage('user-dashboard'); showDashboardTab('contacts')"><i class="fas fa-address-book me-2"></i>Saved Contacts</a>
+              <a href="#" onclick="showPage('user-dashboard'); showDashboardTab('add-recipe')"><i class="fas fa-plus-circle me-2"></i>Add Recipe</a>
+              <div class="dropdown-divider"></div>
+              <a href="#" onclick="logout()"><i class="fas fa-sign-out-alt me-2"></i>Logout</a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  <!-- HOME PAGE -->
+  <div id="home-page">
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="stylish-title">
+        <span class="swad-text">Swad</span>
+        <span class="bharat-text">Bharat</span>
+      </div>
+      <h1>Cook Smart, Eat Swad Bharat</h1>
+        <p>Discover the rich flavors of India with our easy-to-follow recipes. From traditional curries to modern
+          twists, bring the taste of India to your kitchen.</p>
+        
+      </div>
+    </section>
+    <!-- RECIPES PREVIEW -->
+    <main class="container my-5" id="recipes">
+      <h2 class="text-center mb-4" style="font-weight:800"> Indian States</h2>
+
+      <div class="row g-4">
+        <!--Gujarat-->
+        <div class="col-md-4">
+          <article class="recipe-card card">
+            <img loading="lazy" class="card-img-top"
+              src="https://cdn.tasteatlas.com/images/dishes/c5eba8c90005428d89702dd98899f6c8.jpg?w=905&h=510"
+              alt="Gujarat">
+            <div class="card-body">
+              <h5 class="card-title" style="font-weight:700">Gujarat</h5>
+              <p class="card-text">Famous for Dhokla, Khandvi, Thepla and more</p>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <button class="btn btn-sm" style="background:var(--primary-color); color:white; font-weight:700"
+                  onclick="showStateRecipes('gujarat')">View Recipes</button>
+                <small class="text-muted">8+ Recipes</small>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!--Bihar -->
+        <div class="col-md-4">
+          <article class="recipe-card card">
+            <img loading="lazy" class="card-img-top"
+              src="https://st1.latestly.com/wp-content/uploads/2024/02/Litti-Chokha.jpg" alt="Bihar">
+            <div class="card-body">
+              <h5 class="card-title" style="font-weight:700">Bihar</h5>
+              <p class="card-text">Famous for Litti Chokha, Sattu Paratha and more</p>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <button class="btn btn-sm" style="background:var(--primary-color); color:white; font-weight:700"
+                  onclick="showStateRecipes('bihar')">View Recipes</button>
+                <small class="text-muted">8+ Recipes</small>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Punjab -->
+        <div class="col-md-4">
+          <article class="recipe-card card">
+            <img loading="lazy" class="card-img-top"
+              src="https://tse1.mm.bing.net/th/id/OIP.WqAIHoxTa4qhkuVufh3sKQHaE8?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Punjab">
+            <div class="card-body">
+              <h5 class="card-title" style="font-weight:700">Punjab</h5>
+              <p class="card-text">Famous for Butter Chicken, Sarson Ka Saag and more</p>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <button class="btn btn-sm" style="background:var(--primary-color); color:white; font-weight:700"
+                  onclick="showStateRecipes('punjab')">View Recipes</button>
+                <small class="text-muted">8+ Recipes</small>
+              </div>
+            </div>
+          </article>
+        </div>
+        <!-- Andhra Pradesh -->
+        <div class="col-md-4">
+          <article class="recipe-card card">
+            <img loading="lazy" class="card-img-top"
+              src="https://www.mypunepulse.com/wp-content/uploads/2024/08/Andhra-Pulihora.jpg"
+              alt="Andhra-Pradesh">
+            <div class="card-body">
+              <h5 class="card-title" style="font-weight:700">Andhra-Pradesh</h5>
+              <p class="card-text">Famous for Pulihora, Gutti Vankaya Kura, Pootharekuluand and more</p>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <button class="btn btn-sm" style="background:var(--primary-color); color:white; font-weight:700"
+                  onclick="showStateRecipes('Andhra-Pradesh')">View Recipes</button>
+                <small class="text-muted">8+ Recipes</small>
+              </div>
+            </div>
+          </article>
+        </div>
+
+
+        <!--Arunachal Pradesh -->
+        <div class="col-md-4">
+          <article class="recipe-card card">
+            <img loading="lazy" class="card-img-top"
+              src="https://www.cookshideout.com/wp-content/uploads/2014/04/Instant-Pot-Thukpa-FI.jpg"
+              alt="Arunachal Pradesh">
+            <div class="card-body">
+              <h5 class="card-title" style="font-weight:700">Arunachal-Pradesh</h5>
+              <p class="card-text">Famous for Thukpa, Momos, Pika Pila, Apong, Chura Sabzi and more</p>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <button class="btn btn-sm" style="background:var(--primary-color); color:white; font-weight:700"
+                  onclick="showStateRecipes('Arunachal-Pradesh')">View Recipes</button>
+                <small class="text-muted">8+ Recipes</small>
+              </div>
+            </div>
+          </article>
+        </div>
+
+
+
+        <!--Assam -->
+        <div class="col-md-4">
+          <article class="recipe-card card">
+            <img loading="lazy" class="card-img-top"
+              src="https://tse3.mm.bing.net/th/id/OIP.MH0itucg4zfAZTqL25uYYAHaHa?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Assam">
+            <div class="card-body">
+              <h5 class="card-title" style="font-weight:700">Assam</h5>
+              <p class="card-text">Famous for Assamese Thali, Masor Tenga, Aloo Pitika, Duck Meat Curry and more</p>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <button class="btn btn-sm" style="background:var(--primary-color); color:white; font-weight:700"
+                  onclick="showStateRecipes('Assam')">View Recipes</button>
+                <small class="text-muted">8+ Recipes</small>
+              </div>
+            </div>
+          </article>
+        </div>
+
+
+
+        <!-- Chhattisgarh -->
+        <div class="col-md-4">
+          <article class="recipe-card card">
+            <img loading="lazy" class="card-img-top"
+              src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhigtMQK8_Ess02eVlgTG7wQ_s8SgRKunKfw5JkoyfAbab2doNwAilyZiOV4-G4kvUTPHM5hZVzxdsGON9EMDWSUbH6WwolAfQaQnvsIIux9R13xGKD5Ix0HOf33FRSl3KzWBWU9GsToc_n/s1600/fara+or+goojha+or+peetha.NEF-003.jpg" alt="Chhattisgarh">
+            <div class="card-body">
+              <h5 class="card-title" style="font-weight:700">Chhattisgarh</h5>
+              <p class="card-text">Famous for Chila, Faraa, Thethri, Angakar Roti, Bafauri, and more</p>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <button class="btn btn-sm" style="background:var(--primary-color); color:white; font-weight:700"
+                  onclick="showStateRecipes('Chhattisgarh')">View Recipes</button>
+                <small class="text-muted">8+ Recipes</small>
+              </div>
+            </div>
+          </article>
+        </div>
+
+
+
+
+
+
+
+        <!--Goa-->
+        <div class="col-md-4">
+          <article class="recipe-card card">
+            <img loading="lazy" class="card-img-top"
+              src="https://1.bp.blogspot.com/-rqiq1yGAWGE/Xb9RN0J9ftI/AAAAAAAAX1g/t0aO_o4VbtM0Q29tyU4SO6X7yLrQFuuzgCLcBGAsYHQ/s1600/goan%2Bfish%2Bcurry%2B17.JPG"
+              alt="Goa">
+            <div class="card-body">
+              <h5 class="card-title" style="font-weight:700">Goa</h5>
+              <p class="card-text">Famous for Fish Curry, Prawn Balchao, Chicken Cafreal, Goan Sausages,and more</p>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <button class="btn btn-sm" style="background:var(--primary-color); color:white; font-weight:700"
+                  onclick="showStateRecipes('Goa')">View Recipes</button>
+                <small class="text-muted">8+ Recipes</small>
+              </div>
+            </div>
+          </article>
+        </div>
+
+
+
+        <!-- Haryana -->
+        <div class="col-md-4">
+          <article class="recipe-card card">
+            <img loading="lazy" class="card-img-top"
+              src="https://tse2.mm.bing.net/th/id/OIP.gQaWpPQqLwAUe6kWuj1VKAHaLH?rs=1&pid=ImgDetMain&o=7&rm=3"
+              alt=" Haryana">
+            <div class="card-body">
+              <h5 class="card-title" style="font-weight:700">Haryana</h5>
+              <p class="card-text">Famous for Bajra Khichdi, Kachri ki Chutney, Singri ki Sabzi, Bathua Raita,and more
+              </p>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <button class="btn btn-sm" style="background:var(--primary-color); color:white; font-weight:700"
+                  onclick="showStateRecipes('Haryana')">View Recipes</button>
+                <small class="text-muted">8+ Recipes</small>
+              </div>
+            </div>
+          </article>
+        </div>
+
+
+
+        <!--Himachal Pradesh -->
+        <div class="col-md-4">
+          <article class="recipe-card card">
+            <img loading="lazy" class="card-img-top"
+              src="https://media.istockphoto.com/photos/dham-traditional-food-of-himachal-pradesh-himachali-kangri-dham-thali-picture-id1421270274?k=20&m=1421270274&s=170667a&w=0&h=vbHvjUPAqrZJvxJdVhcGdgMOI6StBLPu2TtcJH4S7A4=" alt="Himachal Pradesh ">
+            <div class="card-body">
+              <h5 class="card-title" style="font-weight:700">Himachal-Pradesh</h5>
+              <p class="card-text">Famous for Dham, Siddu, Babru, Chha Gosht, Madra,and more</p>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <button class="btn btn-sm" style="background:var(--primary-color); color:white; font-weight:700"
+                  onclick="showStateRecipes('Himachal-Pradesh')">View Recipes</button>
+                <small class="text-muted">8+ Recipes</small>
+              </div>
+            </div>
+          </article>
+        </div>
+
+
+
+        <!-- Jharkhand -->
+        <div class="col-md-4">
+          <article class="recipe-card card">
+            <img loading="lazy" class="card-img-top" src="https://1.bp.blogspot.com/-kVGK4-a4PeM/WCyfrOQBmbI/AAAAAAAAK7A/aZ0fY90v41Qrx8HLLy2eK1zMxS1Zdt5lgCLcB/s1600/dhokar-dalna3.jpg"
+              alt="Jharkhand">
+            <div class="card-body">
+              <h5 class="card-title" style="font-weight:700">Jharkhand</h5>
+              <p class="card-text">Famous for Thekua, Dhuska, Rugra, Handia, Chilka Roti and more</p>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <button class="btn btn-sm" style="background:var(--primary-color); color:white; font-weight:700"
+                  onclick="showStateRecipes('Jharkhand')">View Recipes</button>
+                <small class="text-muted">8+ Recipes</small>
+              </div>
+            </div>
+          </article>
+        </div>
+
+
+
+
+        <!-- Karnataka -->
+        <div class="col-md-4">
+          <article class="recipe-card card">
+            <img loading="lazy" class="card-img-top"
+              src="https://www.indianhealthyrecipes.com/wp-content/uploads/2021/07/bisi-bele-bath-recipe.jpg"
+              alt="Karnataka">
+            <div class="card-body">
+              <h5 class="card-title" style="font-weight:700">Karnataka</h5>
+              <p class="card-text">Famous for Bisi Bele Bath, Ragi Mudde, Mysore Masala Dosa, Maddur Vada, and more</p>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <button class="btn btn-sm" style="background:var(--primary-color); color:white; font-weight:700"
+                  onclick="showStateRecipes('Karnataka')">View Recipes</button>
+                <small class="text-muted">8+ Recipes</small>
+              </div>
+            </div>
+          </article>
+        </div>
+
+
+
+
+        <!-- Kerala -->
+        <div class="col-md-4">
+          <article class="recipe-card card">
+            <img loading="lazy" class="card-img-top"
+              src="https://vismaifood.com/storage/app/uploads/public/8a4/fe0/5c0/thumb__1200_0_0_0_auto.jpg"
+              alt="Kerala">
+            <div class="card-body">
+              <h5 class="card-title" style="font-weight:700">Kerala</h5>
+              <p class="card-text">Famous forAppam, Kerala Sadya, Puttu, Malabar Parotta, Fish Moilee, Kerala Beef and
+                more</p>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <button class="btn btn-sm" style="background:var(--primary-color); color:white; font-weight:700"
+                  onclick="showStateRecipes('Kerala')">View Recipes</button>
+                <small class="text-muted">8+ Recipes</small>
+              </div>
+            </div>
+          </article>
+        </div>
+
+
+
+
+        <!-- Madhya Pradesh -->
+        <div class="col-md-4">
+          <article class="recipe-card card">
+            <img loading="lazy" class="card-img-top"
+              src="https://tse1.mm.bing.net/th/id/OIP.wZxereJEMCTF_iPbQsYb9AHaLH?rs=1&pid=ImgDetMain&o=7&rm=3"
+              alt="Madhya Pradesh">
+            <div class="card-body">
+              <h5 class="card-title" style="font-weight:700">Madhya-Pradesh</h5>
+              <p class="card-text">Famous for Poha, Bhutte ka Kees, Dal Bafla, Jalebi, Kadhi and more</p>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <button class="btn btn-sm" style="background:var(--primary-color); color:white; font-weight:700"
+                  onclick="showStateRecipes('Madhya-Pradesh')">View Recipes</button>
+                <small class="text-muted">8+ Recipes</small>
+              </div>
+            </div>
+          </article>
+        </div>
+
+
+
+
+
+        <!-- Maharashtra -->
+        <div class="col-md-4">
+          <article class="recipe-card card">
+            <img loading="lazy" class="card-img-top"
+              src="https://tse1.mm.bing.net/th/id/OIP.D9ybaEqeCqcF7CJgY_Z2nQHaKC?rs=1&pid=ImgDetMain&o=7&rm=3"
+              alt="Maharashtra ">
+            <div class="card-body">
+              <h5 class="card-title" style="font-weight:700">Maharashtra</h5>
+              <p class="card-text">Famous for Puran Poli, Vada Pav, Misal Pav, Poha, Modak and more</p>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <button class="btn btn-sm" style="background:var(--primary-color); color:white; font-weight:700"
+                  onclick="showStateRecipes('Maharashtra')">View Recipes</button>
+                <small class="text-muted">8+ Recipes</small>
+              </div>
+            </div>
+          </article>
+        </div>
+        <!-- Manipur -->
+        <div class="col-md-4">
+          <article class="recipe-card card">
+            <img loading="lazy" class="card-img-top"
+              src="https://i.pinimg.com/736x/24/bd/9d/24bd9df282d5a875e55ab9c03b1cbf9e.jpg" alt="Manipur">
+            <div class="card-body">
+              <h5 class="card-title" style="font-weight:700">Manipur</h5>
+              <p class="card-text">Famous for Eromba, Chamthong, Singju, Nga Thongba and more</p>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <button class="btn btn-sm" style="background:var(--primary-color); color:white; font-weight:700"
+                  onclick="showStateRecipes('Manipur')">View Recipes</button>
+                <small class="text-muted">8+ Recipes</small>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Meghalaya -->
+        <div class="col-md-4">
+          <article class="recipe-card card">
+            <img loading="lazy" class="card-img-top"
+              src="https://gayathriscookspot.com/wp-content/uploads/2018/11/Jadoh-1.jpg"
+              alt="Meghalaya">
+            <div class="card-body">
+              <h5 class="card-title" style="font-weight:700">Meghalaya</h5>
+              <p class="card-text">Famous for Jadoh, Dohneiiong, Tungrymbai, Nakham Bitchi, Pumaloi and more</p>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <button class="btn btn-sm" style="background:var(--primary-color); color:white; font-weight:700"
+                  onclick="showStateRecipes('Meghalaya')">View Recipes</button>
+                <small class="text-muted">8+ Recipes</small>
+              </div>
+            </div>
+          </article>
+        </div>
+
+
+
+
+
+        <!-- Mizoram -->
+        <div class="col-md-4">
+          <article class="recipe-card card">
+            <img loading="lazy" class="card-img-top"
+              src="https://tse2.mm.bing.net/th/id/OIP.E3KRQVfOvh3CjFjJrItmUwHaHa?rs=1&pid=ImgDetMain&o=7&rm=3"
+              alt="Mizoram">
+            <div class="card-body">
+              <h5 class="card-title" style="font-weight:700">Mizoram</h5>
+              <p class="card-text">Famous for Bamboo Shoot Curry, Bai, Sawhchiar, Vawksa Rep, Chhangban and more</p>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <button class="btn btn-sm" style="background:var(--primary-color); color:white; font-weight:700"
+                  onclick="showStateRecipes('Mizoram')">View Recipes</button>
+                <small class="text-muted">8+ Recipes</small>
+              </div>
+            </div>
+          </article>
+        </div>
+
+
+
+
+        <!-- Nagaland -->
+        <div class="col-md-4">
+          <article class="recipe-card card">
+            <img loading="lazy" class="card-img-top"
+              src="https://tse3.mm.bing.net/th/id/OIP.tZNHL33c0tQ9T06HQvIByAHaH8?rs=1&pid=ImgDetMain&o=7&rm=3"
+              alt="Nagaland">
+            <div class="card-body">
+              <h5 class="card-title" style="font-weight:700">Nagaland</h5>
+              <p class="card-text">Famous for Smoked Pork with Bamboo Shoot, Axone, Galho, Zutho (Rice Beer), Anishi and
+                more</p>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <button class="btn btn-sm" style="background:var(--primary-color); color:white; font-weight:700"
+                  onclick="showStateRecipes('Nagaland')">View Recipes</button>
+                <small class="text-muted">8+ Recipes</small>
+              </div>
+            </div>
+          </article>
+        </div>
+
+
+
+        <!-- Odisha -->
+        <div class="col-md-4">
+          <article class="recipe-card card">
+            <img loading="lazy" class="card-img-top"
+              src="https://ebhubaneswar.com/wp-content/uploads/2022/06/pampa-12.jpg" alt="Odisha">
+            <div class="card-body">
+              <h5 class="card-title" style="font-weight:700">Odisha</h5>
+              <p class="card-text">Famous for Dalma, Pakhala Bhata, Rasgulla, Chhena Poda, Dahi Bara Aloo Dum, Macha
+                Tarkari and more</p>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <button class="btn btn-sm" style="background:var(--primary-color); color:white; font-weight:700"
+                  onclick="showStateRecipes('Odisha')">View Recipes</button>
+                <small class="text-muted">8+ Recipes</small>
+              </div>
+            </div>
+          </article>
+        </div>
+
+
+
+
+
+
+
+        <!-- Rajasthan -->
+        <div class="col-md-4">
+          <article class="recipe-card card">
+            <img loading="lazy" class="card-img-top"
+              src="https://www.mygingergarlickitchen.com/wp-content/rich-markup-images/1x1/1x1-dal-baati-churma.jpg" alt="Rajasthan">
+            <div class="card-body">
+              <h5 class="card-title" style="font-weight:700">Rajasthan</h5>
+              <p class="card-text">Famous for Dal Baati Churma, Gatte ki Sabzi, Laal Maas, Ker Sangri, Pyaaz Kachori,
+                Mohanthal and more</p>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <button class="btn btn-sm" style="background:var(--primary-color); color:white; font-weight:700"
+                  onclick="showStateRecipes('Rajasthan')">View Recipes</button>
+                <small class="text-muted">8+ Recipes</small>
+              </div>
+            </div>
+          </article>
+        </div>
+
+
+
+
+        <!-- Sikkim -->
+        <div class="col-md-4">
+          <article class="recipe-card card">
+            <img loading="lazy" class="card-img-top"
+              src="https://1.bp.blogspot.com/-xaeLKD4vj1A/YCi3eo5T85I/AAAAAAAAAHA/D6C1A6EHdQIFkTqYpPvQoM6ffYdmghogQCLcBGAsYHQ/s1276/IMG_20210214_110659.jpg" alt="Sikkim">
+            <div class="card-body">
+              <h5 class="card-title" style="font-weight:700">Sikkim</h5>
+              <p class="card-text">Famous for Phagshapa, Thukpa, Momos, Sael Roti,and more</p>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <button class="btn btn-sm" style="background:var(--primary-color); color:white; font-weight:700"
+                  onclick="showStateRecipes('Sikkim')">View Recipes</button>
+                <small class="text-muted">8+ Recipes</small>
+              </div>
+            </div>
+          </article>
+        </div>
+
+
+
+        <!-- Tamil Nadu -->
+        <div class="col-md-4">
+          <article class="recipe-card card">
+            <img loading="lazy" class="card-img-top" 
+            src="https://shwetainthekitchen.com/wp-content/uploads/2022/01/Idli-Sambar.jpg"
+              alt="Tamil Nadu">
+            <div class="card-body">
+              <h5 class="card-title" style="font-weight:700">Tamil-Nadu</h5>
+              <p class="card-text">Famous for Idli, Dosa, Sambhar, Pongal, Chettinad Chicken, Vada and more</p>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <button class="btn btn-sm" style="background:var(--primary-color); color:white; font-weight:700"
+                  onclick="showStateRecipes('Tamil-Nadu')">View Recipes</button>
+                <small class="text-muted">8+ Recipes</small>
+              </div>
+            </div>
+          </article>
+        </div>
+
+
+
+        <!-- Telangana -->
+        <div class="col-md-4">
+          <article class="recipe-card card">
+            <img loading="lazy" class="card-img-top"
+              src="https://efoodsdirect.co.uk/wp-content/uploads/2021/09/Hyderabadi-Biryani1_11zon.jpg" alt="Telangana">
+            <div class="card-body">
+              <h5 class="card-title" style="font-weight:700">Telangana</h5>
+              <p class="card-text">Famous forHyderabadi Biryani, Sarva Pindi, Pesarattu, Mirchi ka Salan, Kodi Kura and
+                more</p>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <button class="btn btn-sm" style="background:var(--primary-color); color:white; font-weight:700"
+                  onclick="showStateRecipes('Telangana')">View Recipes</button>
+                <small class="text-muted">8+ Recipes</small>
+              </div>
+            </div>
+          </article>
+        </div>
+
+
+
+
+
+        <!-- Tripura -->
+        <div class="col-md-4">
+          <article class="recipe-card card">
+            <img loading="lazy" class="card-img-top"
+              src="https://maunikagowardhan.co.uk/wp-content/uploads/2016/01/Keralan-Prawn-Curry.jpg" alt="Tripura">
+            <div class="card-body">
+              <h5 class="card-title" style="font-weight:700">Tripura</h5>
+              <p class="card-text">Famous for Mui Borok, Bamboo Shoot Curry, Wahan Mosdeng, Fish Curry, Gudok and more
+              </p>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <button class="btn btn-sm" style="background:var(--primary-color); color:white; font-weight:700"
+                  onclick="showStateRecipes('Tripura')">View Recipes</button>
+                <small class="text-muted">8+ Recipes</small>
+              </div>
+            </div>
+          </article>
+        </div>
+
+
+
+        <!-- Uttarakhand -->
+        <div class="col-md-4">
+          <article class="recipe-card card">
+            <img loading="lazy" class="card-img-top"
+              src="https://images.slurrp.com/prod/articles/i0vauby5er.webp"
+              alt="Uttarakhand">
+            <div class="card-body">
+              <h5 class="card-title" style="font-weight:700">Uttarakhand</h5>
+              <p class="card-text">Famous for Aloo Ke Gutke, Bhatt ki Churdkani, Kafuli, and more</p>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <button class="btn btn-sm" style="background:var(--primary-color); color:white; font-weight:700"
+                  onclick="showStateRecipes('Uttarakhand')">View Recipes</button>
+                <small class="text-muted">8+ Recipes</small>
+              </div>
+            </div>
+          </article>
+        </div>
+
+
+
+
+
+        <!-- Uttar Pradesh -->
+        <div class="col-md-4">
+          <article class="recipe-card card">
+            <img loading="lazy" class="card-img-top"
+              src="https://tse1.explicit.bing.net/th/id/OIP.9y_tR-vEGM5phVkM8sSXgwHaLG?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3"
+              alt="Uttar Pradesh">
+            <div class="card-body">
+              <h5 class="card-title" style="font-weight:700">Uttar-Pradesh</h5>
+              <p class="card-text">Famous for Awadhi Biryani, Galouti Kebab, Korma, Petha, Bedmi Pooriand more</p>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <button class="btn btn-sm" style="background:var(--primary-color); color:white; font-weight:700"
+                  onclick="showStateRecipes('Uttar-Pradesh')">View Recipes</button>
+                <small class="text-muted">8+ Recipes</small>
+              </div>
+            </div>
+          </article>
+        </div>
+
+
+
+
+        <!-- West Bengal -->
+        <div class="col-md-4">
+          <article class="recipe-card card">
+            <img loading="lazy" class="card-img-top"
+              src="https://www.spicypunch.com/wp-content/uploads/2021/08/katla-macher-jhol-recipe-1.jpg" alt="West Bengal">
+            <div class="card-body">
+              <h5 class="card-title" style="font-weight:700">West-Bengal</h5>
+              <p class="card-text">Famous forRosogolla, Sandesh, Mishti Doi, Shorshe Ilish, Chingri Malai Curry and more
+              </p>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <button class="btn btn-sm" style="background:var(--primary-color); color:white; font-weight:700"
+                  onclick="showStateRecipes('West-Bengal')">View Recipes</button>
+                <small class="text-muted">8+ Recipes</small>
+              </div>
+            </div>
+          </article>
+        </div>
+
+
+
+    </main>
+
+
+    </main>
+
+  </div>
+
+
+
+  <!-- ABOUT PAGE -->
+  <div id="about-page">
+    <!-- ABOUT HERO -->
+    <section class="about-hero">
+      <div class="container">
+        <h1>About Swad Bharat</h1>
+        <p>Discover the story behind our passion for authentic Indian cuisine</p>
+      </div>
+    </section>
+
+    <!-- INTRO SECTION -->
+    <main class="container my-5">
+      <div class="about-card text-center">
+        <h2>Our Story</h2>
+        <p>Swad Bharat is a platform dedicated to sharing the rich and diverse culinary heritage of India. We believe
+          that food brings people together and creates lasting memories. Our mission is to make traditional Indian
+          recipes accessible to everyone, from beginners to experienced cooks.</p>
+      </div>
+    </main>
+
+    <!-- Mission -->
+    <main class="container my-5">
+      <div class="about-card text-center">
+        <h2>Our Mission</h2>
+        <p>To preserve and share authentic Indian recipes while adapting them for modern kitchens. We want to inspire
+          people to cook and enjoy the incredible diversity of Indian cuisine.</p>
+      </div>
+    </main>
+
+    <!-- PROFILE SECTION -->
+    <section class="profile-section">
+      <div class="container">
+        <h2 class="section-title">Meet Our Team</h2>
+        <div class="row g-4">
+
+          <!-- Profile 1 -->
+          <div class="col-md-6">
+            <div class="profile-card text-center">
+              <img src="Mahek.jpg" alt="Team Member 1">
+              <h3>Mahek</h3>
+              <p>Mahek is our design expert who creates beautiful and user-friendly interfaces. She ensures our website
+                is visually appealing and easy to navigate.</p>
+            </div>
+          </div>
+
+          <!-- Profile 2 -->
+          <div class="col-md-6">
+            <div class="profile-card text-center">
+              <img src="Sahista.jpg" alt="Team Member 2">
+              <h3>Sahista</h3>
+              <p>Sahista is our recipe developer who tests and perfects each dish. She has a passion for traditional
+                cooking methods and authentic flavors.</p>
+            </div>
+          </div>
+
+          <!-- Profile 3 -->
+          <div class="col-md-6">
+            <div class="profile-card text-center">
+              <img src="Dipti4.jpg" alt="Team Member 3">
+              <h3>Dipti</h3>
+              <p>Developed the project's modular file architecture (HTML, CSS, JS) and handled all media optimization. 
+                Responsible for editing visual assets and managing the complete version control lifecycle and deployment on GitHub.</p>
+            </div>
+          </div>
+
+          <!-- Profile 4 -->
+          <div class="col-md-6">
+            <div class="profile-card text-center">
+              <img src="Gayatri2.jpg" alt="Team Member 4">
+              <h3>Gayatri</h3>
+              <p>Gayatri manages our community and social media presence. She connects with our audience and shares their
+                cooking experiences.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- USER DASHBOARD -->
+  <div id="user-dashboard">
+    <section class="py-5">
+      <div class="container">
+        <h2 class="section-title">My Dashboard</h2>
+
+        <ul class="nav nav-tabs mb-4" id="dashboardTabs">
+          <li class="nav-item">
+            <a class="nav-link active" id="wishlist-tab" data-bs-toggle="tab" href="#wishlist">My Wishlist</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="contacts-tab" data-bs-toggle="tab" href="#contacts">Saved Contacts</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="add-recipe-tab" data-bs-toggle="tab" href="#add-recipe">Add Recipe</a>
+          </li>
+        </ul>
+
+        <div class="tab-content" id="dashboardTabContent">
+          <!-- Wishlist Tab -->
+          <div class="tab-pane fade show active" id="wishlist">
+            <div class="row">
+              <div class="col-md-8">
+                <div class="dashboard-card">
+                  <h3><i class="fas fa-heart text-danger me-2"></i>My Favorite Recipes</h3>
+                  <div id="wishlist-items">
+                    <!-- Wishlist items will be populated here -->
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="dashboard-card">
+                  <h3><i class="fas fa-info-circle me-2"></i>Wishlist Info</h3>
+                  <p>Save your favorite recipes to access them quickly later. You can add recipes from any page by
+                    clicking the "Add to Wishlist" button.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contacts Tab -->
+          <div class="tab-pane fade" id="contacts">
+            <div class="row">
+              <div class="col-md-8">
+                <div class="dashboard-card">
+                  <h3><i class="fas fa-address-book me-2"></i>Saved Contacts</h3>
+                  <div id="contact-items">
+                    <!-- Contact items will be populated here -->
+                  </div>
+                  <button class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#addContactModal">
+                    <i class="fas fa-plus me-2"></i>Add New Contact
+                  </button>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="dashboard-card">
+                  <h3><i class="fas fa-info-circle me-2"></i>Contacts Info</h3>
+                  <p>Save contacts of fellow food enthusiasts, chefs, or suppliers. Keep all your culinary connections
+                    in one place.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Add Recipe Tab -->
+          <div class="tab-pane fade" id="add-recipe">
+            <div class="row">
+              <div class="col-md-8">
+                <div class="dashboard-card">
+                  <h3><i class="fas fa-plus-circle me-2"></i>Add Your Recipe</h3>
+                  <form class="recipe-form" id="recipeForm">
+                    <div class="form-group">
+                      <label for="recipeName">Recipe Name</label>
+                      <input type="text" class="form-control" id="recipeName" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="recipeCategory">Category</label>
+                      <select class="form-control" id="recipeCategory" required>
+                        <option value="">Select Category</option>
+                        <option value="main-course">Main Course</option>
+                        <option value="appetizer">Appetizer</option>
+                        <option value="dessert">Dessert</option>
+                        <option value="beverage">Beverage</option>
+                        <option value="snack">Snack</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="recipeIngredients">Ingredients</label>
+                      <textarea class="form-control" id="recipeIngredients" rows="4"
+                        placeholder="List ingredients with measurements..." required></textarea>
+                    </div>
+                    <div class="form-group">
+                      <label for="recipeInstructions">Instructions</label>
+                      <textarea class="form-control" id="recipeInstructions" rows="6"
+                        placeholder="Step-by-step instructions..." required></textarea>
+                    </div>
+                    <div class="form-group">
+                      <label for="recipeImage">Recipe Image URL</label>
+                      <input type="url" class="form-control" id="recipeImage"
+                        placeholder="https://example.com/image.jpg">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit Recipe</button>
+                  </form>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="dashboard-card">
+                  <h3><i class="fas fa-lightbulb me-2"></i>Tips for Great Recipes</h3>
+                  <ul>
+                    <li>Be specific with measurements</li>
+                    <li>Include cooking times and temperatures</li>
+                    <li>Add personal tips or variations</li>
+                    <li>Use clear, step-by-step instructions</li>
+                    <li>Include serving suggestions</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- STATE RECIPES PAGE -->
+  <div id="state-recipes-page">
+    <section class="state-recipes-hero">
+      <div class="container">
+        <button class="btn btn-outline-light mb-4" onclick="showPage('home-page')">
+          <i class="fas fa-arrow-left me-2"></i>Back to States
+        </button>
+        <h1 id="state-recipes-title" class="display-4 fw-bold"></h1>
+        <p id="state-recipes-subtitle" class="lead"></p>
+      </div>
+    </section>
+
+    <section class="py-5">
+      <div class="container">
+        <div class="recipe-grid" id="state-recipes-container">
+          <!-- Recipes will be dynamically added here -->
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- RECIPE DETAIL PAGE -->
+  <div id="recipe-detail-page">
+    <section class="recipe-detail-hero">
+      <div class="container">
+        <button class="btn btn-outline-light mb-4" onclick="showPage('state-recipes-page')">
+          <i class="fas fa-arrow-left me-2"></i>Back to Recipes
+        </button>
+      </div>
+    </section>
+
+    <section class="py-5">
+      <div class="container">
+        <div class="recipe-detail-content">
+          <div class="row">
+            <div class="col-lg-8">
+              <img id="detail-recipe-image" src="" alt="" class="img-fluid rounded mb-4"
+                style="width: 100%; height: 400px; object-fit: cover;">
+              <h1 id="detail-recipe-title" style="color: var(--primary-color);"></h1>
+
+              <div class="recipe-meta mb-4">
+                <span id="detail-recipe-time"></span>
+                <span id="detail-recipe-difficulty"></span>
+                <span id="detail-recipe-servings"></span>
+              </div>
+
+              <p id="detail-recipe-description" class="lead mb-4"></p>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="ingredients-list">
+                    <h3><i class="fas fa-list me-2"></i>Ingredients</h3>
+                    <ul id="detail-recipe-ingredients">
+                      <!-- Ingredients will be populated here -->
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="instructions-list">
+                    <h3><i class="fas fa-utensils me-2"></i>Instructions</h3>
+                    <ol id="detail-recipe-instructions">
+                      <!-- Instructions will be populated here -->
+                    </ol>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4">
+              <div class="dashboard-card mb-4">
+                <h3><i class="fas fa-info-circle me-2"></i>Recipe Tips</h3>
+                <p id="detail-recipe-tips"></p>
+              </div>
+
+              <div class="dashboard-card">
+                <h3><i class="fas fa-heart me-2"></i>Actions</h3>
+                <button class="btn btn-primary w-100 mb-2" onclick="addToWishlistFromDetail()">
+                  <i class="fas fa-heart me-2"></i>Add to Wishlist
+                </button>
+                <button class="btn btn-outline-secondary w-100" onclick="printRecipe()">
+                  <i class="fas fa-print me-2"></i>Print Recipe
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>&copy; <span id="year"></span> Swad Bharat — Cook Smart, Eat Swad Bharat</p>
+    </div>
+  </footer>
+
+  <!-- LOGIN MODAL -->
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="loginModalLabel">Login to Swad Bharat</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="loginForm">
+            <div class="mb-3">
+              <label for="email" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="loginEmail" placeholder="name@example.com" required>
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input type="password" class="form-control" id="loginPassword" placeholder="Password" required>
+            </div>
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="rememberMe">
+              <label class="form-check-label" for="rememberMe">Remember me</label>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Login</button>
+          </form>
+          <div class="text-center mt-3">
+            <a href="#">Forgot password?</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REGISTER MODAL -->
+  <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="registerModalLabel">Join Swad Bharat</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="registerForm">
+            <div class="mb-3">
+              <label for="registerName" class="form-label">Full Name</label>
+              <input type="text" class="form-control" id="registerName" placeholder="Enter your name" required>
+            </div>
+            <div class="mb-3">
+              <label for="registerEmail" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="registerEmail" placeholder="name@example.com" required>
+            </div>
+            <div class="mb-3">
+              <label for="registerPassword" class="form-label">Password</label>
+              <input type="password" class="form-control" id="registerPassword" placeholder="Create a password"
+                required>
+            </div>
+            <div class="mb-3">
+              <label for="registerConfirmPassword" class="form-label">Confirm Password</label>
+              <input type="password" class="form-control" id="registerConfirmPassword"
+                placeholder="Confirm your password" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Create Account</button>
+          </form>
+          <div class="text-center mt-3">
+            <p>By registering, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADD CONTACT MODAL -->
+  <div class="modal fade" id="addContactModal" tabindex="-1" aria-labelledby="addContactModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addContactModalLabel">Add New Contact</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="addContactForm">
+            <div class="mb-3">
+              <label for="contactName" class="form-label">Name</label>
+              <input type="text" class="form-control" id="contactName" placeholder="Enter contact name" required>
+            </div>
+            <div class="mb-3">
+              <label for="contactEmail" class="form-label">Email</label>
+              <input type="email" class="form-control" id="contactEmail" placeholder="contact@example.com">
+            </div>
+            <div class="mb-3">
+              <label for="contactPhone" class="form-label">Phone</label>
+              <input type="tel" class="form-control" id="contactPhone" placeholder="Phone number">
+            </div>
+            <div class="mb-3">
+              <label for="contactRelation" class="form-label">Relationship</label>
+              <input type="text" class="form-control" id="contactRelation" placeholder="e.g., Chef, Supplier, Friend">
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Save Contact</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,584 @@
+:root {
+      --primary-color: #e63946;
+      --secondary-color: #f1faee;
+      --accent-color: #a8dadc;
+      --dark-color: #1d3557;
+      --light-color: #fffaf5;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--light-color);
+      color: #333;
+    }
+
+    .navbar {
+      background: var(--primary-color);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar .navbar-brand {
+      color: #fff;
+      font-weight: 800;
+      font-size: 1.8rem;
+    }
+
+    .navbar .nav-link {
+      color: #fff;
+      font-weight: 500;
+      margin: 0 5px;
+      transition: all 0.3s ease;
+    }
+
+    .navbar .nav-link:hover,
+    .navbar .nav-link.active {
+      color: var(--secondary-color);
+      transform: translateY(-2px);
+    }
+
+    .navbar .nav-link.active {
+      font-weight: 700;
+      position: relative;
+    }
+
+    .navbar .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 10%;
+      width: 80%;
+      height: 2px;
+      background: var(--secondary-color);
+    }
+
+    .hero-section {
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url('https://share.google/BCzB7So5PEL4rQN65') center/cover no-repeat;
+      padding: 120px 0;
+      text-align: center;
+      color: #fff;
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-section h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-section p {
+      font-size: 1.3rem;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+    }
+
+    .btn-primary {
+      background-color: var(--primary-color);
+      border: none;
+      padding: 12px 30px;
+      font-weight: 600;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: #c1121f;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative;
+      color: var(--dark-color);
+    }
+
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--primary-color);
+      border-radius: 2px;
+    }
+
+    .about-hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url('https://source.unsplash.com/1600x800/?indian-food,spices') center/cover no-repeat;
+      padding: 100px 0;
+      text-align: center;
+      color: #fff;
+    }
+
+    .about-hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .about-hero p {
+      font-size: 1.2rem;
+      margin-top: 10px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .about-card {
+      background: white;
+      border-radius: 16px;
+      padding: 2.5rem;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+      margin-bottom: 2rem;
+    }
+
+    .about-card h2 {
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--primary-color);
+    }
+
+    .profile-section {
+      padding: 3rem 0;
+    }
+
+    .profile-card {
+      background: white;
+      border-radius: 14px;
+      padding: 2rem;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      margin-bottom: 2rem;
+      transition: all 0.3s ease;
+      height: 100%;
+    }
+
+    .profile-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .profile-card img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      border: 4px solid var(--accent-color);
+    }
+
+    .profile-card h3 {
+      font-weight: 700;
+      color: var(--primary-color);
+    }
+
+    .profile-card p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* Page-specific styles */
+    #home-page {
+      display: block;
+    }
+
+    #about-page {
+      display: none;
+    }
+
+    #user-dashboard {
+      display: none;
+    }
+
+    /* User Dashboard Styles */
+    .user-actions {
+      display: flex;
+      gap: 10px;
+      margin-left: 15px;
+    }
+
+    .user-actions .btn {
+      font-size: 0.85rem;
+      padding: 6px 12px;
+    }
+
+    .user-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 10px;
+      border: 2px solid white;
+    }
+
+    .user-dropdown {
+      display: none;
+      position: absolute;
+      background: white;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      padding: 10px 0;
+      min-width: 200px;
+      right: 0;
+      top: 100%;
+      z-index: 1000;
+    }
+
+    .user-dropdown.show {
+      display: block;
+    }
+
+    .user-dropdown a {
+      display: block;
+      padding: 8px 15px;
+      color: #333;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .user-dropdown a:hover {
+      background: #f8f9fa;
+      color: var(--primary-color);
+    }
+
+    .user-menu {
+      position: relative;
+    }
+
+    .dashboard-card {
+      background: white;
+      border-radius: 14px;
+      padding: 1.5rem;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      margin-bottom: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .dashboard-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    }
+
+    .dashboard-card h3 {
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+    }
+
+    .wishlist-item,
+    .contact-item {
+      display: flex;
+      align-items: center;
+      padding: 15px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .wishlist-item img,
+    .contact-item img {
+      width: 60px;
+      height: 60px;
+      border-radius: 8px;
+      object-fit: cover;
+      margin-right: 15px;
+    }
+
+    .wishlist-item h5,
+    .contact-item h5 {
+      margin-bottom: 5px;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    footer {
+      background: var(--dark-color);
+      color: white;
+      text-align: center;
+      padding: 2rem 0;
+    }
+
+    .flex-grow-1 {
+      flex-grow: 1;
+    }
+
+    /* State Recipes Page Styles */
+    #state-recipes-page {
+      display: none;
+    }
+
+    #recipe-detail-page {
+      display: none;
+    }
+
+    .state-recipes-hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url('https://source.unsplash.com/1600x900/?indian-food,spices') center/cover no-repeat;
+      padding: 80px 0;
+      text-align: center;
+      color: #fff;
+    }
+
+    .recipe-detail-hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+      padding: 60px 0;
+      color: #fff;
+    }
+
+    .recipe-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .recipe-item {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .recipe-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .recipe-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .recipe-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .recipe-item-content {
+      padding: 1.5rem;
+    }
+
+    .recipe-meta {
+      display: flex;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+
+    .recipe-meta span {
+      background: var(--accent-color);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    .recipe-detail-content {
+      background: white;
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      margin-top: -50px;
+      position: relative;
+    }
+
+    .ingredients-list,
+    .instructions-list {
+      background: var(--secondary-color);
+      padding: 1.5rem;
+      border-radius: 10px;
+      margin-bottom: 1.5rem;
+    }
+
+    .ingredients-list li,
+    .instructions-list li {
+      margin-bottom: 0.5rem;
+      padding-left: 0.5rem;
+    }
+
+    /* Recipe Card Styles */
+    .recipe-card {
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      height: 100%;
+    }
+
+    .recipe-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .recipe-card img {
+      border-radius: 12px 12px 0 0;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .recipe-card .card-body {
+      padding: 1.5rem;
+    }
+    /* Search Bar Styles */
+.search-container {
+  position: relative;
+  margin-right: 15px;
+}
+
+.search-input {
+  background: white; 
+  border: 1px solid #ddd; 
+  border-radius: 50px;
+  padding: 8px 45px 8px 15px;
+  color: #333; 
+  width: 250px;
+  transition: all 0.3s ease;
+}
+
+.search-input::placeholder {
+  color: #666; 
+}
+
+.search-input:focus {
+  background: white; 
+  border-color: var(--primary-color); 
+  box-shadow: 0 0 0 2px rgba(230, 57, 70, 0.2); 
+  outline: none;
+}
+
+.search-btn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: #666; 
+  cursor: pointer;
+}
+
+.search-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 1000;
+  display: none;
+}
+
+.search-results.active {
+  display: block;
+}
+
+.search-result-item {
+  padding: 10px 15px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.search-result-item:hover {
+  background: #f8f9fa;
+}
+
+.search-result-item:last-child {
+  border-bottom: none;
+}
+
+.search-result-item h6 {
+  margin-bottom: 5px;
+  color: var(--dark-color);
+}
+
+.search-result-item p {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 0;
+}
+/* Stylish Title Styles */
+.stylish-title {
+  font-size: 5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+  line-height: 1.1;
+}
+
+
+
+/* Hero Section Background Enhancement */
+.hero-section {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+              url('Background.jpg') center/cover no-repeat;
+  padding: 120px 0;
+  text-align: center;
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+/* Optional: Add some animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stylish-title {
+  animation: fadeInUp 1s ease-out;
+}
+
+.hero-section h1 {
+  animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+.hero-section p {
+  animation: fadeInUp 1s ease-out 0.6s both;
+}
+
+.hero-section .btn {
+  animation: fadeInUp 1s ease-out 0.9s both;
+}
+/* Extra Glow Effect */
+.stylish-title {
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7),
+               0 0 20px rgba(255, 107, 107, 0.3),
+               0 0 40px rgba(78, 205, 196, 0.2);
+}
+
+/* Hover Effects */
+.swad-text:hover {
+  color: #ff5252;
+  transition: color 0.3s ease;
+}
+
+.bharat-text:hover {
+  color: #26a69a;
+  transition: color 0.3s ease;
+
+}
